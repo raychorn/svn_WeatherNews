@@ -1,0 +1,22 @@
+<?xml version="1.0" standalone="yes"?>
+<chart>
+<description>
+<parameter>convection</parameter>
+<level>upr</level>
+<issue>2005/12/28 06:00</issue>
+<valid>2005/12/28 06:02</valid>
+</description>
+
+<areaset>
+
+<area>
+<sigType>CNVC</sigType>
+<sigLevel>LOW/HIGH</sigLevel>
+<coverage>30</coverage>
+<avgtop>330</avgtop>
+<maxtop>380</maxtop>
+<points><coordinates>-44.96,41.85,-44.52,41.25,-44.47,40.69,-44.74,40.09,-45.05,39.51,-45.40,38.94,-45.78,38.38,-46.16,37.82,-46.56,37.28,-46.96,36.73,-46.96,36.73,-47.41,36.20,-47.90,35.71,-48.46,35.22,-49.10,34.70,-49.65,34.57,-50.12,35.04,-50.42,35.71,-50.41,36.28,-50.10,36.86,-49.93,37.06,-49.51,37.60,-49.14,38.16,-48.81,38.73,-48.49,39.31,-48.15,39.88,-47.74,40.52,-47.24,41.23,-46.69,41.82,-46.06,42.16,-45.38,42.06</coordinates></points>
+</area>
+
+</areaset>
+</chart>

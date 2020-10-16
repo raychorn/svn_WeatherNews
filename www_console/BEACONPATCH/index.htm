@@ -1,0 +1,187 @@
+<cfparam name="GLOBALPARAMS_INC" default=0>
+
+<cfif not GLOBALPARAMS_INC>
+		<cfparam name="gErrString" default="">
+		
+		<cfset INTRANET_DS = "INTRANETDB">	
+		<cfset AVNOPS_DS = "AVNOPS">	
+		<cfset MEDIACAST_DS = "WOW">	
+		<cfset BUSPROD_DS = "BUSPROD">	
+		<cfset BUSHIST_DS = "BUSHIST">	
+		<cfset BUSARCHIVE_DS = "BUSARCHIVE">	
+	
+<cfset fntAll = "face=""Verdana, Arial, Helvetica, sans-serif"" size=""2"" color=""##000000""">
+<cfset fntHeaderTitle = "face=""Verdana, Arial, Helvetica, sans-serif"" size=""+2"" color=""##0000FF""">
+<cfset fntHeaderBody = "face=""Verdana, Arial, Helvetica, sans-serif"" size=""+1"" color=""##6699FF""">
+<cfset fntErrAll = "face=Verdana, Arial, Helvetica, sans-serif"" color=##ff0000">
+<cfset fntFooter = "face=Verdana, Arial, Helvetica, sans-serif"" size=-2 color=##000000">
+<cfset HeaderBGColor = "bgcolor=339999">
+<cfset ContentBGColor = "bgcolor=c0c0c0">
+<cfset fntBottomNav = "face=""Verdana, Arial, Helvetica, sans-serif"" size=""-2"" color=""##ffffff""">
+<cfset fntsubNav = "face=""Verdana, Arial, Helvetica, sans-serif"" size=""1"" color=""##000000""">
+<cfset fntChartTitle = "face=""Verdana, Arial, Helvetica, sans-serif"" size=""2"" color=""##ffffff""">
+
+	
+		<cfset GLOBALPARAMS_INC = 1>
+</cfif><!--- if not GLOBALS_INC --->	
+
+
+<?xml version="1.0" encoding="Shift_JIS"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS" />
+<meta http-equiv="content-language" content="ja" />
+<!-- <META HTTP-EQUIV="Refresh"  CONTENT="10; URL=http://www.weathernews.com/us/c/"> -->
+
+<title>Beacon Patches</title>
+
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+<meta http-equiv="content-style-type" content="text/css" />
+<meta http-equiv="content-script-type" content="text/javascript" />
+<script language="javascript" type="text/javascript">
+/*function scroller(ps){
+		scroller_up(ps,250);
+}
+	
+function scroller_up(ps,y){
+	y = y + (ps - y)*.1;
+	window.scroll(0,y);
+	if (((ps - y) <= .5)&&((ps - y) >= -.5))
+	{					
+		y = ps;
+	}else{
+		setTimeout("scroller_up("+ps+","+y+")",1);
+	}
+}*/
+function changeImages (imgId, imgSrc) {
+    if (document.getElementById) {
+        document.getElementById(imgId).src = imgSrc;
+    }
+}
+</script>
+
+<link href="http://us.weathernews.com/css/layout.css" rel="stylesheet" type="text/css" /> 
+<link href="http://us.weathernews.com/css/pixel.css" rel="stylesheet" type="text/css" /> 
+<style type="text/css">
+.wniRedText {
+	color: #CC3300;
+}
+.apixelbigger {  font-size: 12px; font-weight: bold; font-family: Verdana, Arial, Helvetica, sans-serif}
+table td {
+	vertical-align:top;
+}
+</style>
+
+</head>
+
+<body>
+
+<div id="body">
+
+<cfoutput>
+<cfset RootPath = "http://weathernews.com/us/c/" />
+<div id="header">
+<div id="logo"><a href="#RootPath#"><img src="<cfoutput>#Request.imagesPrefix#</cfoutput>logo.gif" width="196" height="50" alt="weathernews" /></a></div>
+<div id="gMenu"><span><a href="http://www.weathernews.com/index.html"><img src="<cfoutput>#Request.imagesPrefix#</cfoutput>go_global.gif" width="83" height="20" alt="Global" /></a></span></div>
+<div id="menu">
+  <div id="menu">
+    <!-- <div align="right">
+		<span><a href="#RootPath#" onmouseover="changeImages ('menu01', '<cfoutput>#Request.imagesPrefix#</cfoutput>menu_01_over.gif');" onmouseout="changeImages ('menu01', '<cfoutput>#Request.imagesPrefix#</cfoutput>menu_01.gif');"><img src="<cfoutput>#Request.imagesPrefix#</cfoutput>menu_01.gif" width="44" height="20" id="menu01" alt="Home" /></a></span>
+		<span><a href="#RootPath#services/" onmouseover="changeImages ('menu02', '<cfoutput>#Request.imagesPrefix#</cfoutput>menu_02_over.gif');" onmouseout="changeImages ('menu02', '<cfoutput>#Request.imagesPrefix#</cfoutput>menu_02.gif');"><img src="<cfoutput>#Request.imagesPrefix#</cfoutput>menu_02.gif" alt="Services" width="56" height="20" border="0" id="menu02" /></a></span>
+		<span><a href="#RootPath#support/" onmouseover="changeImages ('menu04', '<cfoutput>#Request.imagesPrefix#</cfoutput>menu_04_over.gif');" onmouseout="changeImages ('menu04', '<cfoutput>#Request.imagesPrefix#</cfoutput>menu_04.gif');"><img src="<cfoutput>#Request.imagesPrefix#</cfoutput>menu_04.gif" width="56" height="20" id="menu04" alt="Support" /></a></span>
+		<span><a href="#RootPath#company/" onmouseover="changeImages ('menu05', '<cfoutput>#Request.imagesPrefix#</cfoutput>menu_05_over.gif');" onmouseout="changeImages ('menu05', '<cfoutput>#Request.imagesPrefix#</cfoutput>menu_05.gif');"><img src="<cfoutput>#Request.imagesPrefix#</cfoutput>menu_05.gif" width="58" height="20" id="menu05" alt="Company" /></a></span>
+		<span><a href="#RootPath#press/" onmouseover="changeImages ('menu07', '<cfoutput>#Request.imagesPrefix#</cfoutput>menu_07_over.gif');" onmouseout="changeImages ('menu07', '<cfoutput>#Request.imagesPrefix#</cfoutput>menu_07.gif');"><img src="<cfoutput>#Request.imagesPrefix#</cfoutput>menu_07.gif" width="46" height="20" id="menu07" alt="Press" /></a></span>
+		<span><a href="#RootPath#recruiting/" onmouseover="changeImages ('menu08', '<cfoutput>#Request.imagesPrefix#</cfoutput>menu_08_over.gif');" onmouseout="changeImages ('menu08', '<cfoutput>#Request.imagesPrefix#</cfoutput>menu_08.gif');"><img src="<cfoutput>#Request.imagesPrefix#</cfoutput>menu_08.gif" width="59" height="20" id="menu08" alt="Careers" /></a></span>
+		<span><a href="#RootPath#sitemap/" onmouseover="changeImages ('menu09', '<cfoutput>#Request.imagesPrefix#</cfoutput>menu_09_over.gif');" onmouseout="changeImages ('menu09', '<cfoutput>#Request.imagesPrefix#</cfoutput>menu_09.gif');"><img src="<cfoutput>#Request.imagesPrefix#</cfoutput>menu_09.gif" width="73" height="20" id="menu09" alt="Sitemap" /></a></span>
+	</div -->
+  </div>
+</div>
+<div id="topPhoto2"><img src="<cfoutput>#Request.imagesPrefix#</cfoutput>default_photo_left.jpg" width="558" height="263" alt="The World's Largest Full-Service Weather Company" /><img src="<cfoutput>#Request.imagesPrefix#</cfoutput>default_photo_right.jpg" width="194" height="263" alt="The World's Largest Full-Service Weather Company" /></div>
+</div>
+</cfoutput>
+
+<div id="content">
+<p style="font-weight:bold;">---------------------------------------------------------<br />
+
+                  Beacon Patches <br />
+
+----------------------------------------------------------</p>
+
+ 
+<p>This page contains links and instructions for a workaround to a known Internet Explorer bug that affects Weathernews' Beacon software.</p>
+<p><strong>Problem:</strong></p>
+<p>The current version of Beacon (1.4) can sometimes slow down or hang depending on the number of simultaneous users on a server.  
+This problem is seen when using Internet Explorer on Windows-based PCs and is a result of a known Internet Explorer bug 
+(related to the number of simultaneous open connections).</p>
+<p></p>
+</p>
+<p><table>
+		<tr>
+			<td><a href="BeaconRegModInstall.exe" title="Fix Internet Explorer Problem">Fix Internet Explorer Problem </a></td>
+			<td>Clicking on this link will download an application which will run and change two of your IE browser settings.  
+			This should not affect any of your other applications.
+			<ul>
+				<li>Windows XP Service Pack 2</li>
+					<ul>
+						<li>when you click the link, you will be presented with a message that says "Do you want to run or save this file?"
+						      Please click "Run"</li>
+						<li>You will then be presented with a message that says that the "Publisher Can't be Verified." It will ask you if you
+						     are sure you want to run this software.  Please click "Run" again.</li>
+						<li>You will be presented with a third message that describes the change to be made to your computer and prompts
+						      you to press "OK" or "Cancel."  Please press "OK."</li>
+						<li>Finally your update will be complete.  Please close Internet Explorer and restart it before accessing BEACON.</li>
+					</ul>
+				<li>Windows 2000 Service Pack 4</li>
+					<ul>
+						<li>when you click the link, you may be presented with a message that says "Do you want to open or save this file?"
+						      Please click "Open"</li>
+						<li>You will be presented with a second message that describes the change to be made to your computer and prompts
+						      you to press "OK" or "Cancel."  Please press "OK."</li>
+						<li>Finally your update will be complete.  Please close Internet Explorer and restart it before accessing BEACON.</li>
+					</ul>
+				</ul></td>
+		</tr>
+		<tr>
+			<td><a href="BeaconRegModUninstall.exe" title="Restore Original Settings">Restore Original Settings</a></td>
+			<td>Click on this link if you would like to restore the settings to their original values.
+			<ul>
+				<li>Windows XP Service Pack 2</li>
+					<ul>
+						<li>when you click the link, you will be presented with a message that says "Do you want to run or save this file?"
+						      Please click "Run"</li>
+						<li>You will then be presented with a message that says that the "Publisher Can't be Verified." It will ask you if you
+						     are sure you want to run this software.  Please click "Run" again.</li>
+						<li>You will be presented with a third message that describes the change to be made to your computer and prompts
+						      you to press "OK" or "Cancel."  Please press "OK."</li>
+						<li>Finally your update will be complete.  Please close Internet Explorer and restart it before accessing BEACON.</li>
+					</ul>
+				<li>Windows 2000 Service Pack 4</li>
+					<ul>
+						<li>when you click the link, you may be presented with a message that says "Do you want to open or save this file?"
+						      Please click "Open"</li>
+						<li>You will be presented with a second message that describes the change to be made to your computer and prompts
+						      you to press "OK" or "Cancel."  Please press "OK."</li>
+						<li>Finally your update will be complete.  Please close Internet Explorer and restart it before accessing BEACON.</li>
+					</ul>
+				</ul></td>
+		</tr>
+	</table>
+<p>If you have any questions please call / e-mail Steve Ableman at <a href="mailto:stevea@wni.com" title="Email Steve Ableman">stevea@wni.com</a></p>
+</div>
+
+<cfoutput>
+<div id="footer">
+	<div class="footer">
+		<!-- <span><a href="#RootPath#contact/" onmouseover="changeImages ('footerContact', '<cfoutput>#Request.imagesPrefix#</cfoutput>footer_01_over.gif');" onmouseout="changeImages ('footerContact', '<cfoutput>#Request.imagesPrefix#</cfoutput>footer_01.gif');"><img src="<cfoutput>#Request.imagesPrefix#</cfoutput>footer_01.gif" alt="Contact Us" width="66" height="19" id="footerContact" /></a></span>
+		<span><a href="#RootPath#terms/" onmouseover="changeImages ('footerTerms', '<cfoutput>#Request.imagesPrefix#</cfoutput>footer_02_over.gif');" onmouseout="changeImages ('footerTerms', '<cfoutput>#Request.imagesPrefix#</cfoutput>footer_02.gif');"><img src="<cfoutput>#Request.imagesPrefix#</cfoutput>footer_02.gif" alt="Terms Of Use" width="76" height="19" id="footerTerms" /></a></span>-->
+		<!-- <span><img src="<cfoutput>#Request.imagesPrefix#</cfoutput>footer_blank.gif" width="262" height="19" alt="" /></span>  -->
+		<span><img src="<cfoutput>#Request.imagesPrefix#</cfoutput>footer_blank.gif" width="262" height="19" alt="" /><img src="<cfoutput>#Request.imagesPrefix#</cfoutput>footer_copy.gif" width="255" height="19" alt="&copy;1996-2005 WEATHERNEWS INC. ALL RIGHTS RESERVED." /><img src="<cfoutput>#Request.imagesPrefix#</cfoutput>footer_blank.gif" width="232" height="19" alt="" /></span>
+	</div>
+</div>
+</cfoutput>
+</div>
+
+</body>
+</html>
+

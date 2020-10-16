@@ -1,0 +1,365 @@
+<cfinclude template="include/GlobalParams.cfm">
+
+<cfparam name="PageNum" default="1">
+<cfparam name="authfailed" default="0">
+<cfparam name="NotFound" default="0">
+<cfparam name="reasonType" default="Please Log In">
+
+<cfif FindNoCase("logout",query_String)>
+	<cfcookie name="initialized" value="0" expires="now">
+	<cfcookie name="rememberMe" value="0" expires="never">
+	<cfcookie name="password" value="0" expires="now">
+</cfif>
+
+<!--- <cfset topSection = "LOGIN">
+<cfinclude template="include/topbar.cfm">
+ --->
+<cfif PageNum EQ 2>
+
+	<cfif ISDefined("fEmail")>
+
+		<cfset sFN="fEmail">
+		<cfset sFT="null">
+		<cf_errorCheck fieldList = "#sFN#" fieldTypes= "#sFT#">
+	
+		<CFQUERY NAME="gUserEmail" DATASOURCE="#INTRANET_DS#">
+			select UserID, UserName, UserPassword, UserGreeting, UserEmail
+			from AvnUsers
+			where UserEmail = '#fEmail#'
+			and Deleted = 0
+		</CFQUERY>
+	
+		<cfif gUserEmail.recordcount is 1>
+			<cfmail to="#gUserEmail.UserEmail#" from="aviation@wni.com" subject="Account Information Request" bcc="ioannisk@wni.com" type="html" >
+			<p>#gUserEmail.UserGreeting#,</p>
+<p>Thank you for contacting Weathernews' Sky Services to retrieve your account information.  
+You will find your username and password below for the <a href="https://beacon.wni.com/">Weathernews BEACON</a> website.
+</p>
+
+<p>User: #gUserEmail.UserName#<br>
+Password: #gUserEmail.UserPassword#</p>
+
+<p>If you did not contact us to retrieve this information, then someone is using your email address to access your account.  If this is the case, we recommend you change your password by contacting us.  Simply reply to this email, let us know you would like your password changed, and we will notify you of your new account information shortly.</p>
+
+<p>Best regards,<br>
+Weathernews' Sky Services Team</p>
+			</cfmail>
+		
+		<cfelse> <!--- Not a valid user --->
+			<cfset NotFound = 1>
+		</cfif>
+
+	<cfelse>			
+
+		<cfset sFN="uname,pword">
+		<cfset sFT="null,null">
+		<cf_errorCheck fieldList = "#sFN#" fieldTypes= "#sFT#">
+	</cfif>
+
+</cfif>
+
+<cfif authfailed EQ 1>
+	<cfif LEN(gErrString)>
+		<cfset reasonType = "The items highlighted in red below must be completed in order for you to log in.  Please enter your username and password in these fields below.  If you have forgotten your username or password, enter your email address in the box marked Email, and we will send you your log in information shortly.">
+	<cfelse>	
+		<cfset reasonType = "Unfortunately, we cannot find that username or password in our database.  Please try entering your log in information again.  If you have forgotten your username or password, enter your email address in the box marked Email, and we will send you your log in information shortly.">
+	</cfif>
+</cfif>
+
+<cfif ISDefined("fEmail")>
+	<cfif NotFound EQ 1>
+		<cfif LEN(fEmail)>
+			<cfset reasonType = "Unfortunately, we cannot find your email address (<strong>#fEmail#</strong>) in our database.  Please try entering your email again, or <a href='support.htm'>contact us</a> to receive your log in information.">
+		<cfelse>
+			<cfset reasonType = "The items highlighted in red below must be completed in order for you to log in.">
+		</cfif>
+	<cfelse>
+		<cfset reasonType = "Thank you.  You will receive an email shortly (at <strong>#fEmail#</strong>) with your log in information.">
+	</cfif>
+</cfif>
+
+<cfif FindNoCase("reason",query_String)>
+	<cfswitch expression="#URL.Reason#">
+		<cfcase value="1">
+			<cfset reasonType = "Your session has timed out(1). To log back in, simply enter your username and password in the section below.">
+		</cfcase>
+		<cfcase value="2">
+			<cfset reasonType = "Thank you. Come back again.">
+		</cfcase>
+		<cfcase value="3">
+			<cfset reasonType = "Your session has timed out(3). To log back in, simply enter your username and password in the section below.">
+		</cfcase>
+		<cfdefaultcase>
+			<cfset reasonType = "To continue, please log in again">
+		</cfdefaultcase>
+	</cfswitch>
+</cfif>
+
+<html>
+<head>
+<title>Weathernews BEACON</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="/include/css/text_attributes.css" rel="stylesheet" type="text/css">
+<script language="JavaScript" type="text/JavaScript">
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+
+function openWin( windowURL, windowName, windowFeatures ) { 
+	return window.open( windowURL, windowName, windowFeatures ) ; 
+} 
+//-->
+</script>
+
+<script type="text/javascript" src="flash_detect.js">
+//<![CDATA[
+function getFlashVersion() { return null; };
+//]]>
+</script>
+
+
+</head>
+<body bgcolor="#333333" leftmargin="6" topmargin="6" marginwidth="6" marginheight="6" id="login" onLoad="MM_preloadImages('/images/bottom_nav_images/contact_button_ovr.gif','/images/bottom_nav_images/terms_of_use_button_ovr.gif','/images/bottom_nav_images/privacy_button_ovr.gif','/images/bottom_nav_images/disclaimer_button_ovr.gif')">
+<div style="position: relative; width: 100%">
+  <table width="692" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#E3E6E8"><!--DWLayoutTable-->
+    <tr>
+      <td colspan="3">
+        <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+          <tr>
+            <td width="8" height="23" valign="top"><img src="/images/main_table_images/main_left_top_corner.gif" width="8" height="23" alt=""></td>
+            <td width="100%" nowrap background="/images/main_table_images/top_nav_cell_background.gif"></td>
+            <td width="8"><img src="/images/main_table_images/main_right_top_corner.gif" width="8" height="23" alt=""></td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td width="8" background="/images/left_side_bezel.gif"><img src="/images/spacer.gif" width="8" height="1" alt=""></td>
+      <td width="676" valign="top">
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+          <tr>
+            <td><img src="/images/content_frame_images/content_corner_top_left.gif" width="6" height="8" alt=""></td>
+            <td width="161" background="/images/content_frame_images/content_frame_top.gif"><img src="/images/spacer.gif" width="161" height="8" alt=""></td>
+            <td><img src="/images/content_frame_images/content_corner_top_right.gif" width="6" height="8" alt=""></td>
+            <td><img src="/images/spacer.gif" width="6" height="1" alt=""></td>
+            <td bgcolor="#E3E6E8"><img src="/images/content_frame_images/content_corner_top_left.gif" width="6" height="8" alt=""></td>
+            <td width="100%" colspan="2" background="/images/content_frame_images/content_frame_top.gif"><img src="/images/spacer.gif" width="1" height="8" alt=""></td>
+            <td><img src="/images/content_frame_images/content_corner_top_right.gif" width="6" height="8" alt=""></td>
+          </tr>
+          <tr>
+            <td rowspan="2" background="/images/content_frame_images/content_frame_left.gif"><img src="/images/spacer.gif" width="6" height="300" alt=""></td>
+            <td rowspan="2" valign="top" bgcolor="#FFFFFF">
+              <div align="center" style="height: 72px; padding-bottom: 6px; display: block"><img src="/images/login_images/logo.gif" width="161" height="72"></div>
+              <div align="center">
+              <img src="/images/AVIATIONEMBLEM.jpg" width="161" height="139"></div>
+			  <div align="center" style="position: bottom; width: 100%"></div>
+            </td>
+            <td rowspan="2" background="/images/content_frame_images/content_frame_right.gif"><img src="/images/spacer.gif" width="6" height="1" alt=""></td>
+            <td rowspan="2"><img src="/images/spacer.gif" width="6" height="1" alt=""></td>
+            <td rowspan="2" background="/images/content_frame_images/content_frame_left.gif" bgcolor="#E3E6E8"><img src="/images/spacer.gif" width="6" height="6" alt=""></td>
+            <td width="100%" colspan="2" align="left" valign="top" bgcolor="#FFFFFF">
+              <div style="height: 72px"><img src="/images/login_images/title.gif" alt="Weathernews BEACON" width="485" height="72"></div>
+			  <div class="SearchMenuBG1" style="padding-right: 6px">
+                <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                  <tr>
+                    <td><span class="sideMenuFontLev1"><cfoutput>#reasonType#</cfoutput></span></td>
+                  </tr>
+                </table>
+              </div>
+              <div class="sideMenuBG2" style="padding: 2px 6px 3px 6px; border-left: #72828B 1px solid; border-bottom: #72828B 1px solid; margin-bottom: 6px">
+                  <table width="100%" border="0" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF" style="margin-bottom: 3px">
+                  <tr>
+                    <td width="6"><img src="/images/content_frame_images/content_corner_top_left.gif" width="6" height="8" alt=""></td>
+                    <td width="100%" valign="top" background="/images/content_frame_images/content_frame_top.gif"><img src="/images/spacer.gif" width="6" height="1" alt=""></td>
+                    <td width="6" valign="top"><img src="/images/content_frame_images/content_corner_top_right.gif" width="6" height="8" alt=""></td>
+                  </tr>
+                  <tr>
+                    <td background="/images/content_frame_images/content_frame_left.gif"><img src="/images/spacer.gif" width="6" height="6" alt=""> </td>
+                    <td>
+					
+					<table width="100%" border="0" cellspacing="0" cellpadding="0">
+	                <form action="/default.htm" name="loginForm" method="post">
+					<cfoutput>
+					  <tr>
+						<td align="right"><cf_font_r_ns fn="uname" gErrString="#gErrString#">User Name</cf_font_r_ns>&nbsp;</td>
+						<td width="200" style="padding: 0 0 6px 0">
+						  <input name="uname" type="text" class="input-box" <cfif IsDefined("cookie.username")>value="#cookie.username#"<cfelseif ISDefined("uname")>value="#uname#"</cfif>>
+						</td>
+						<td>&nbsp;</td>
+					  </tr>
+					  <tr>
+						<td align="right"><cf_font_r_ns fn="pword" gErrString="#gErrString#">Password</cf_font_r_ns>&nbsp;</td>
+						<td width="200" style="padding: 0 0 6px 0">
+						  <input name="pword" type="password" class="input-box">
+						</td>
+						<td style="padding: 0 0 6px 6px">
+						  <input type="hidden" name="PageNum" value="2">
+						  <input name="submit" type="image" src="/images/forms/enter.gif" alt="Enter" width="45" height="18" border="0">
+						</td>
+						</tr>
+					  <tr>
+						<td align="right">&nbsp;</td>
+						<td width="200">
+						  <input name="rememberMe" type="checkbox" <cfif IsDefined("cookie.rememberMe")><cfif cookie.rememberMe EQ 1>checked<cfelseif rememberMe EQ "on">checked</cfif></cfif>>Remember my username and password on this computer</td>
+						<td>&nbsp;</td>
+					  </tr>
+					  </cfoutput>
+					  </form>	
+  
+  
+				  <tr>
+					<td>&nbsp;</td>
+					<td style="padding: 6px 0">Forgotten your log-in information? <br>
+				Enter your e-mail address below and we'll send it to you:</td>
+					<td>&nbsp;</td>
+				  </tr>
+    			  <form action="login.htm" method="post">
+				  <tr>
+					<td align="right"><cf_font_r_ns fn="fEmail" gErrString="#gErrString#">Email</cf_font_r_ns>&nbsp;</td>
+					<td width="200">
+  					 <cfoutput>
+					  <input name="fEmail" type="text" class="input-box" id="userName22"  <cfif ISDefined("fEmail")>value="#fEmail#"</cfif>>
+  					 </cfoutput>
+					</td>
+					<td style="padding: 0 0 0 6px">
+					  <input type="hidden" name="PageNum" value="2">
+					  <input name="submit2" type="image" id="submit2" src="/images/forms/send.gif" alt="Send" width="45" height="18" border="0">
+					</td>
+				   </tr>
+				   </form>
+				</table>
+				</td>
+                    <td background="/images/content_frame_images/content_frame_right.gif"></td>
+                  </tr>
+                  <tr>
+                    <td><img src="/images/content_frame_images/content_corner_bot_left.gif" width="6" height="7" alt=""></td>
+                    <td background="/images/content_frame_images/content_frame_bottom.gif"></td>
+                    <td><img src="/images/content_frame_images/content_corner_bottom_right.gif" width="6" height="7" alt=""></td>
+                  </tr>
+                </table>
+              </div>
+			  <div>
+			  <p>&nbsp;</p>
+			  </div>
+            </td>
+            <td rowspan="2" background="/images/content_frame_images/content_frame_right.gif"><img src="/images/spacer.gif" width="6" height="1" alt=""></td>
+          </tr>
+          <tr><td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+            <td width="100%" align="right" valign="bottom" bgcolor="#FFFFFF">
+
+
+			<script type="text/javascript">
+            //<![CDATA[
+            var requiredVersion = 7;
+            var flashVersion = getFlashVersion();
+            
+            if (flashVersion >= requiredVersion) {
+               document.write('<span class="footer">This site requires the Flash Player Plug-in,&nbsp;<br>available free from Macromedia.&nbsp;</span>');
+            }
+            else if (flashVersion > 0) {
+               document.write('<span class="footer"><strong>The version of Flash installed on the current browser is ' + flashVersion + '.&nbsp;');
+               document.write('<br>You need version ' + requiredVersion + ' in order for the product to function correctly.&nbsp;');
+               document.write('<br>Download the latest version.&nbsp;</strong></span>');
+            }
+            else if (flashVersion == 0) {
+               document.write('<span class="footer"><strong>You don\'t have Flash installed on the current browser.&nbsp;');
+               document.write('<br>You need version ' + requiredVersion + ' in order for the product to function correctly.&nbsp;');
+               document.write('<br>Download the latest version.&nbsp;</strong></span>');
+            }
+            //else if (flashVersion == flashVersion_DONTKNOW || flashVersion == null) {
+            //   document.write('<p>This browser does not support Javascript-based Flash detection.</p>');
+            //}
+            //]]>
+            </script>
+             <!--- <span class="footer">This site requires the <a href="http://www.macromedia.com/go/getflashplayer/" target="_blank">Flash Player Plug-in</a>,&nbsp;<br>
+                available free from Macromedia.&nbsp;</span>   --->         
+			</td>
+            <td width="88" align="left"  bgcolor="#FFFFFF"><a href="http://www.macromedia.com/go/getflashplayer/" target="_blank"><img src="/images/login_images/get_flashplayer.gif" width="88" height="31" border="0"></a></td>
+          </tr>
+</table></td>
+</tr>
+          <tr>
+            <td><img src="/images/content_frame_images/content_corner_bot_left.gif" width="6" height="7" alt=""></td>
+            <td background="/images/content_frame_images/content_frame_bottom.gif"><img src="/images/spacer.gif" width="1" height="7" alt=""></td>
+            <td><img src="/images/content_frame_images/content_corner_bottom_right.gif" width="6" height="7" alt=""></td>
+            <td><img src="/images/spacer.gif" width="6" height="1" alt=""></td>
+            <td bgcolor="#E3E6E8"><img src="/images/content_frame_images/content_corner_bot_left.gif" width="6" height="7" alt=""></td>
+            <td width="100%" colspan="2" background="/images/content_frame_images/content_frame_bottom.gif"><img src="/images/spacer.gif" width="1" height="7" alt=""></td>
+            <td><img src="/images/content_frame_images/content_corner_bottom_right.gif" width="6" height="7" alt=""></td>
+          </tr>
+        </table>
+        <table width="100%" cellpadding="0" cellspacing="0">
+          <tr>
+            <td><img src="/images/spacer.gif" width="6" height="1" alt=""></td>
+            <td>
+              <h3>&nbsp;<br>
+                Weathernews Aviation Team 24-hour Support:</h3>
+              <p class="footer"> <cfoutput>#request.OPS_PHONE_CONTACT#</cfoutput> | <!--- Instant Message: <a href="#">WNISky</a> | --->
+                Fax: 405.310.2806 | E-mail: <a href="mailto:WNISkyRc@wni.com">WNISkyRc@wni.com</a></p>
+            </td>
+            <td></td>
+          </tr>
+        </table>
+      </td>
+      <td width="8" background="/images/main_table_images/right_side_bezel.gif"> <img src="/images/spacer.gif" width="6" height="1" alt=""> </td>
+    </tr>
+    <tr>
+      <td><img src="/images/main_table_images/main_bottom_left_corner.gif" width="8" height="9" alt=""></td>
+      <td background="/images/main_table_images/main_bottom_bezel.gif"><img src="/images/spacer.gif" width="1" height="9" alt=""></td>
+      <td><img src="/images/main_table_images/main_bottom_right_corner.gif" width="8" height="9" alt=""></td>
+    </tr>
+  </table>
+  <!-- ImageReady Slices (bottom nav.psd) -->
+  <TABLE WIDTH=692 BORDER=0 align="center" CELLPADDING=0 CELLSPACING=0>
+    <TR>
+      <td bgcolor="#333333"><img src="/images/spacer.gif" width="1" height="9" alt=""></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>
+	  <TR>
+		<TD BGCOLOR="#333333"><IMG SRC="/images/bottom_nav_images/spacer.gif" WIDTH=1 HEIGHT=27 ALT=""></TD>
+		<cfoutput>    
+		<TD><a href="#CorporateRootPath#contact/" onMouseOver="MM_swapImage('contactUs','','/images/bottom_nav_images/contact_button_ovr.gif',1)" onMouseOut="MM_swapImgRestore()"><IMG SRC="/images/bottom_nav_images/contact_button.gif" ALT="Contact Us" name="contactUs" WIDTH=63 HEIGHT=27 border="0" id="contactUs"></a></TD>
+		<TD><a href="#CorporateRootPath#terms/" onMouseOver="MM_swapImage('termsOfUse','','/images/bottom_nav_images/terms_of_use_button_ovr.gif',1)" onMouseOut="MM_swapImgRestore()"><IMG SRC="/images/bottom_nav_images/terms_of_use_button.gif" ALT="Terms of Use" name="termsOfUse" WIDTH=65 HEIGHT=27 border="0" id="termsOfUse"></a></TD>
+		<TD><a href="#CorporateRootPath#privacy/" onMouseOver="MM_swapImage('privacyPolicy','','/images/bottom_nav_images/privacy_button_ovr.gif',1)" onMouseOut="MM_swapImgRestore()"><IMG SRC="/images/bottom_nav_images/privacy_button.gif" ALT="Privacy Policy" name="privacyPolicy" WIDTH=68 HEIGHT=27 border="0" id="privacyPolicy"></a></TD>
+		<TD><a href="javascript:void(0);" onClick="newWin=openWin('/Disclaimer.htm','WeathernewsBEACON','status=yes,scrollbars=yes,resizable=yes,width=800,height=550'); newWin.focus();" onMouseOver="MM_swapImage('disclaimer','','/images/bottom_nav_images/disclaimer_button_ovr.gif',1)" onMouseOut="MM_swapImgRestore()"><IMG SRC="/images/bottom_nav_images/disclaimer_button.gif" ALT="Disclaimer" name="disclaimer" WIDTH=62 HEIGHT=27 border="0" id="disclaimer"></a></TD>
+		</cfoutput>    
+		<TD width="100%" background="/images/bottom_nav_images/bottom_nav_background.gif"> <IMG SRC="/images/bottom_nav_images/spacer.gif" WIDTH=1 HEIGHT=27 ALT=""></TD>
+		<TD><IMG SRC="/images/bottom_nav_images/copyright.gif" WIDTH=215 HEIGHT=27 ALT="Copyright 1996-2005 Weathernerws Inc., All Rights Reserved"></TD>
+	  </TR>
+  </TABLE>
+</div>
+</body>
+</html>

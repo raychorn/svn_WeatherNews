@@ -1,0 +1,475 @@
+<?xml version="1.0" standalone="yes"?>
+<Layers>
+	<Layer>
+		<ID>1</ID>
+		<Name>SatelliteIR</Name>
+		<DisplayName>Infrared (IR)</DisplayName>
+		<Times>out_east_nh.txt,out_gms5_fd.txt,out_msg1_fd.txt,out_west_nh.txt,out_met5_fd.txt</Times>
+	</Layer>
+	<Layer>
+		<ID>2</ID>
+		<Name>SatelliteVS</Name>
+		<DisplayName>Visible</DisplayName>
+		<Times></Times>
+	</Layer>
+	<Layer>
+		<ID>3</ID>
+		<Name>Airports</Name>
+		<DisplayName>Airports</DisplayName>
+		<Times></Times>
+	</Layer>
+	<Layer>
+		<ID>4</ID>
+		<Name>ATSH</Name>
+		<DisplayName>Jet Routes</DisplayName>
+		<Times></Times>
+	</Layer>
+	<Layer>
+		<ID>5</ID>
+		<Name>ATSL</Name>
+		<DisplayName>Victor Routes</DisplayName>
+		<Times></Times>
+	</Layer>
+	<Layer>
+		<ID>6</ID>
+		<Name>NavT</Name>
+		<DisplayName>NavT</DisplayName>
+		<Times></Times>
+	</Layer>
+	<Layer>
+		<ID>7</ID>
+		<Name>range_rings_radar</Name>
+		<DisplayName>Range Rings</DisplayName>
+		<Times></Times>
+	</Layer>
+	<Layer>
+		<ID>8</ID>
+		<Name>Spot Elevations</Name>
+		<DisplayName>Spot Elevations</DisplayName>
+		<Times></Times>
+	</Layer>
+	<Layer>
+		<ID>9</ID>
+		<Name>Cities</Name>
+		<DisplayName>Cities</DisplayName>
+		<Times></Times>
+	</Layer>
+	<Layer>
+		<ID>10</ID>
+		<Name>US State Borders</Name>
+		<DisplayName>US State Borders</DisplayName>
+		<Times></Times>
+	</Layer>
+	<Layer>
+		<ID>11</ID>
+		<Name>Borders</Name>
+		<DisplayName>Country Borders</DisplayName>
+		<Times></Times>
+	</Layer>
+	<Layer>
+		<ID>12</ID>
+		<Name>Counties</Name>
+		<DisplayName>Counties</DisplayName>
+		<Times></Times>
+	</Layer>
+	<Layer>
+		<ID>13</ID>
+		<Name>Highways</Name>
+		<DisplayName>Highways</DisplayName>
+		<Times></Times>
+	</Layer>
+	<Layer>
+		<ID>14</ID>
+		<Name>Inundated</Name>
+		<DisplayName>Inundated</DisplayName>
+		<Times></Times>
+	</Layer>
+	<Layer>
+		<ID>15</ID>
+		<Name>Waterbodies</Name>
+		<DisplayName>Waterbodies</DisplayName>
+		<Times></Times>
+	</Layer>
+	<Layer>
+		<ID>16</ID>
+		<Name>Coastlines</Name>
+		<DisplayName>Coastlines</DisplayName>
+		<Times></Times>
+	</Layer>
+	<Layer>
+		<ID>17</ID>
+		<Name>LatLon</Name>
+		<DisplayName>Latitude/Longitude</DisplayName>
+		<Times></Times>
+	</Layer>
+	<Layer>
+		<ID>18</ID>
+		<Name>Countries</Name>
+		<DisplayName>Countries</DisplayName>
+		<Times></Times>
+	</Layer>
+	<Layer>
+		<ID>19</ID>
+		<Name>Boundaries -Lo</Name>
+		<DisplayName>Boundaries -Lo</DisplayName>
+		<Times></Times>
+	</Layer>
+	<Layer>
+		<ID>20</ID>
+		<Name>Boundaries -Hi</Name>
+		<DisplayName>Boundaries -Hi</DisplayName>
+		<Times></Times>
+	</Layer>
+	<Layer>
+		<ID>21</ID>
+		<Name>Waypoints</Name>
+		<DisplayName>Waypoints</DisplayName>
+		<Times></Times>
+	</Layer>
+	<Layer>
+		<ID>22</ID>
+		<Name>SatelliteWV</Name>
+		<DisplayName>Water Vapor</DisplayName>
+		<Times>out_east_nh.txt,out_gms5_fd.txt,out_msg1_fd.txt,out_west_nh.txt</Times>
+	</Layer>
+	<Layer>
+		<ID>23</ID>
+		<Name>CONUS Radar Mosaic</Name>
+		<DisplayName>US Reflectivity</DisplayName>
+		<Times>CONUS_mosaic_time.txt</Times>
+	</Layer>
+	<Layer>
+		<ID>24</ID>
+		<Name>VOR</Name>
+		<DisplayName>VORs</DisplayName>
+		<Times></Times>
+	</Layer>
+	<Layer>
+		<ID>25</ID>
+		<Name>CONUSIR</Name>
+		<DisplayName>US Infrared (IR)</DisplayName>
+		<Times>out_east_conus.txt</Times>
+	</Layer>
+	<Layer>
+		<ID>26</ID>
+		<Name>CONUSVS</Name>
+		<DisplayName>US Visible</DisplayName>
+		<Times>out_east_conus.txt</Times>
+	</Layer>
+	<Layer>
+		<ID>27</ID>
+		<Name>CONUSWV</Name>
+		<DisplayName>US Water Vapor</DisplayName>
+		<Times>out_east_conus.txt</Times>
+	</Layer>
+	<Layer>
+		<ID>28</ID>
+		<Name>EUROPE Radar Mosaic</Name>
+		<DisplayName>Europe Reflectivity</DisplayName>
+		<Times>EUROPE_mosaic_time.txt</Times>
+	</Layer>
+
+
+	<Layer>
+		<ID>30</ID>
+		<Name>EUROPE_IR_NH</Name>
+		<DisplayName>Europe Infrared</DisplayName>
+		<Times>out_europe.txt</Times>
+	</Layer>
+	<Layer>
+		<ID>31</ID>
+		<Name>EUROPE_VS_NH</Name>
+		<DisplayName>Europe Visible</DisplayName>
+		<Times>out_europe.txt</Times>
+	</Layer>
+	<Layer>
+		<ID>32</ID>
+		<Name>EUROPE_WV_NH</Name>
+		<DisplayName>Europe Water Vapor</DisplayName>
+		<Times>out_europe.txt</Times>
+	</Layer>
+
+	<Layer>
+		<ID>35</ID>
+		<Name>ASIA_IR_NH</Name>
+		<DisplayName>Asia Infrared</DisplayName>
+		<Times>out_asia.txt</Times>
+	</Layer>
+	<Layer>
+		<ID>37</ID>
+		<Name>ASIA_WV_NH</Name>
+		<DisplayName>Asia Water Vapor</DisplayName>
+		<Times>out_asia.txt</Times>
+	</Layer>
+	<Layer>
+		<ID>38</ID>
+		<Name>CONUS_RDR_COMP</Name>
+		<DisplayName>US Radar Summary</DisplayName>
+		<Times>CONUS_COMP_mosaic_time.txt</Times>
+	</Layer>
+	<Layer>
+		<ID>39</ID>
+		<Name>CONUS_RDR_WIN</Name>
+		<DisplayName>US Winter Mos</DisplayName>
+		<Times>CONUS_WIN_mosaic_time.txt</Times>
+	</Layer>
+	<Layer>
+		<ID>102</ID>
+		<Name>METAR</Name>
+		<DisplayName>METARs</DisplayName>
+		<Times></Times>
+	</Layer>
+	<Layer>
+		<ID>103</ID>
+		<Name>PIREP</Name>
+		<DisplayName>PIREPs</DisplayName>
+		<Times></Times>
+	</Layer>
+	<Layer>
+		<ID>104</ID>
+		<Name>WNIOFFICE</Name>
+		<DisplayName>WNI Offices</DisplayName>
+		<Times></Times>
+	</Layer>
+	<Layer>
+		<ID>105</ID>
+		<Name>Fronts</Name>
+		<DisplayName>Fronts/Highs/Lows</DisplayName>
+		<Times></Times>
+	</Layer>
+	<Layer>
+		<ID>106</ID>
+		<Name>Flight Rules</Name>
+		<DisplayName>Flight Rules</DisplayName>
+		<Times></Times>
+	</Layer>
+	<Layer>
+		<ID>107</ID>
+		<Name>Winds(Curr)</Name>
+		<DisplayName>Winds(Curr)</DisplayName>
+		<Times></Times>
+	</Layer>
+	<Layer>
+		<ID>108</ID>
+		<Name>Cell Tops/Motion</Name>
+		<DisplayName>Tops/Motion</DisplayName>
+		<Times>CONUS_COMP_mosaic_time.txt</Times>
+	</Layer>
+	<Layer>
+		<ID>109</ID>
+		<Name>Pressure</Name>
+		<DisplayName>Surface Pressure</DisplayName>
+		<Times>pressure.xml</Times>
+	</Layer>
+	<Layer>
+		<ID>110</ID>
+		<Name>Freezing Level</Name>
+		<DisplayName>Freezing Level</DisplayName>
+		<Times>frzlvl.xml</Times>
+	</Layer>
+	<Layer>
+		<ID>111</ID>
+		<Name>Tropopause Height</Name>
+		<DisplayName>Tropopause Height</DisplayName>
+		<Times>gztropo.xml</Times>
+	</Layer>
+	<Layer>
+		<ID>112</ID>
+		<Name>Turbulence</Name>
+		<DisplayName>Turbulence</DisplayName>
+		<Times>turb.xml</Times>
+	</Layer>
+	<Layer>
+		<ID>113</ID>
+		<Name>Convective</Name>
+		<DisplayName>Convective</DisplayName>
+		<Times>cnvc.xml</Times>
+	</Layer>
+	<Layer>
+		<ID>114</ID>
+		<Name>Temps(curr)</Name>
+		<DisplayName>Temps(curr)</DisplayName>
+		<Times></Times>
+	</Layer>
+	<Layer>
+		<ID>115</ID>
+		<Name>Stations</Name>
+		<DisplayName>Stations</DisplayName>
+		<Times></Times>
+	</Layer>
+	<Layer>
+		<ID>116</ID>
+		<Name>TAF</Name>
+		<DisplayName>TAFs</DisplayName>
+		<Times></Times>
+	</Layer>
+	<Layer>
+		<ID>117</ID>
+		<Name>FCST SFC TEMP 0HR</Name>
+		<DisplayName>0HR SFC</DisplayName>
+		<Times>temp_sfc_00.xml</Times>
+	</Layer>
+	<Layer>
+		<ID>118</ID>
+		<Name>FCST SFC TEMP 12HR</Name>
+		<DisplayName>12HR SFC</DisplayName>
+		<Times>temp_sfc_12.xml</Times>
+	</Layer>
+	<Layer>
+		<ID>119</ID>
+		<Name>FCST SFC TEMP 24HR</Name>
+		<DisplayName>24HR SFC</DisplayName>
+		<Times>temp_sfc_24.xml</Times>
+	</Layer>
+	<Layer>
+		<ID>120</ID>
+		<Name>FCST SFC TEMP 36HR</Name>
+		<DisplayName>36HR SFC</DisplayName>
+		<Times>temp_sfc_36.xml</Times>
+	</Layer>
+	<Layer>
+		<ID>121</ID>
+		<Name>FCST SFC TEMP 48HR</Name>
+		<DisplayName>48HR SFC</DisplayName>
+		<Times>temp_sfc_48.xml</Times>
+	</Layer>
+	<Layer>
+		<ID>122</ID>
+		<Name>FCST FL200 TEMP 0HR</Name>
+		<DisplayName>0HR FL200</DisplayName>
+		<Times>temp_200_00.xml</Times>
+	</Layer>
+	<Layer>
+		<ID>123</ID>
+		<Name>FCST FL200 TEMP 12HR</Name>
+		<DisplayName>12HR FL200</DisplayName>
+		<Times>temp_200_12.xml</Times>
+	</Layer>
+	<Layer>
+		<ID>124</ID>
+		<Name>FCST FL200 TEMP 24HR</Name>
+		<DisplayName>24HR FL200</DisplayName>
+		<Times>temp_200_24.xml</Times>
+	</Layer>
+	<Layer>
+		<ID>125</ID>
+		<Name>FCST FL200 TEMP 6HR</Name>
+		<DisplayName>6HR FL200</DisplayName>
+		<Times>temp_200_06.xml</Times>
+	</Layer>
+	<Layer>
+		<ID>126</ID>
+		<Name>FCST FL200 TEMP 18HR</Name>
+		<DisplayName>18HR FL200</DisplayName>
+		<Times>temp_200_18.xml</Times>
+	</Layer>
+	<Layer>
+		<ID>127</ID>
+		<Name>FCST FL250 TEMP 0HR</Name>
+		<DisplayName>0HR FL250</DisplayName>
+		<Times>temp_250_00.xml</Times>
+	</Layer>
+	<Layer>
+		<ID>128</ID>
+		<Name>FCST FL250 TEMP 12HR</Name>
+		<DisplayName>12HR FL250</DisplayName>
+		<Times>temp_250_12.xml</Times>
+	</Layer>
+	<Layer>
+		<ID>129</ID>
+		<Name>FCST FL250 TEMP 24HR</Name>
+		<DisplayName>24HR FL250</DisplayName>
+		<Times>temp_250_24.xml</Times>
+	</Layer>
+	<Layer>
+		<ID>130</ID>
+		<Name>FCST FL250 TEMP 6HR</Name>
+		<DisplayName>6HR FL250</DisplayName>
+		<Times>temp_250_06.xml</Times>
+	</Layer>
+	<Layer>
+		<ID>131</ID>
+		<Name>FCST FL250 TEMP 18HR</Name>
+		<DisplayName>18HR FL250</DisplayName>
+		<Times>temp_250_18.xml</Times>
+	</Layer>
+	<Layer>
+		<ID>132</ID>
+		<Name>FCST FL300 TEMP 0HR</Name>
+		<DisplayName>0HR FL300</DisplayName>
+		<Times>temp_300_00.xml</Times>
+	</Layer>
+	<Layer>
+		<ID>133</ID>
+		<Name>FCST FL300 TEMP 12HR</Name>
+		<DisplayName>12HR FL300</DisplayName>
+		<Times>temp_300_12.xml</Times>
+	</Layer>
+	<Layer>
+		<ID>134</ID>
+		<Name>FCST FL300 TEMP 24HR</Name>
+		<DisplayName>24HR FL300</DisplayName>
+		<Times>temp_300_24.xml</Times>
+	</Layer>
+	<Layer>
+		<ID>135</ID>
+		<Name>FCST FL300 TEMP 6HR</Name>
+		<DisplayName>6HR FL300</DisplayName>
+		<Times>temp_300_06.xml</Times>
+	</Layer>
+	<Layer>
+		<ID>136</ID>
+		<Name>FCST FL300 TEMP 18HR</Name>
+		<DisplayName>18HR FL300</DisplayName>
+		<Times>temp_300_18.xml</Times>
+	</Layer>
+	<Layer>
+		<ID>137</ID>
+		<Name>FCST PRES 0HR</Name>
+		<DisplayName>0HR</DisplayName>
+		<Times>pressure_00.xml</Times>
+	</Layer>
+	<Layer>
+		<ID>138</ID>
+		<Name>FCST PRES 12HR</Name>
+		<DisplayName>12HR</DisplayName>
+		<Times>pressure_12.xml</Times>
+	</Layer>
+	<Layer>
+		<ID>139</ID>
+		<Name>FCST PRES 24HR</Name>
+		<DisplayName>24HR</DisplayName>
+		<Times>pressure_24.xml</Times>
+	</Layer>
+	<Layer>
+		<ID>140</ID>
+		<Name>FCST PRES 48HR</Name>
+		<DisplayName>48HR</DisplayName>
+		<Times>pressure_48.xml</Times>
+	</Layer>
+	<Layer>
+		<ID>141</ID>
+		<Name>FCST FRONT 00Z</Name>
+		<DisplayName>0HR</DisplayName>
+		<Times>fronts_00.xml</Times>
+	</Layer>
+	<Layer>
+		<ID>142</ID>
+		<Name>FCST FRONT 12Z</Name>
+		<DisplayName>12HR</DisplayName>
+		<Times>fronts_12.xml</Times>
+	</Layer>
+	<Layer>
+		<ID>143</ID>
+		<Name>SIGMET</Name>
+		<DisplayName>SIGMETs</DisplayName>
+		<Times></Times>
+	</Layer>
+	<Layer>
+		<ID>144</ID>
+		<Name>AIRMET</Name>
+		<DisplayName>AIRMETs</DisplayName>
+		<Times></Times>
+	</Layer>
+</Layers>
+

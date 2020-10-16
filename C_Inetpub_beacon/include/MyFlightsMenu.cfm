@@ -1,0 +1,77 @@
+	<cfquery NAME="getMyFlights" DATASOURCE="#INTRANET_DS#">
+		select F.FlightID, F.FlightName, F.BBox, F.MapLayers, F.LastUpdated
+		from AvnUsers U, AvnFlights F
+		where U.LoginID = '#ListGetAt(cookie.BeaconStats,1,"|")#' 
+				AND U.UserID = F.UserID
+				AND F.SectionID = #mID#
+		and U.Deleted = 0 and F.Deleted = 0
+		order by F.FlightName
+	</cfquery>
+
+	<cfset r = Randomize(#Int(TimeFormat(now(),"sslss"))#)>
+	<cfset RandomNum = #Rand()# >
+	<cfset uniqueClick = #RIGHT(RandomNum,10)#>
+
+<!--- <div style="position: relative; width: 100%; top: 1px; left: 0px;"> --->
+  <div class="SearchMenuBG1" style="padding-right: 6px" align="left">
+    <table width="100%" cellpadding="0" cellspacing="0" border="0">
+      <tr>
+        <td><span class="sideMenuFontLev1">Saved Flights</span></td>
+        <td align="right"><a href="/#Request.const_default_htm#?mID=20"><img src="/images/preferences_icon.gif" width="9" height="9" border="0" onmouseover="this.T_WIDTH=45;this.T_STATIC=true;this.T_OPACITY=95; return escape('Set Up')"></a></td>
+      </tr>
+    </table>
+  </div>
+  
+  <div class="SideMenuBG2" style="padding: 2px 6px 3px 6px; border-left: #72828B 1px solid; border-bottom: #72828B 1px solid; margin-bottom: 6px" align="left">
+    <table width="100%" border="0" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF" style="margin-bottom: 3px">
+      <tr>
+        <td width="6"><img src="/images/content_frame_images/content_corner_top_left.gif" width="6" height="8" alt=""></td>
+        <td width="100%" valign="top" background="/images/content_frame_images/content_frame_top.gif"><img src="/images/spacer.gif" width="6" height="1" alt=""></td>
+        <td width="6" valign="top"><img src="/images/content_frame_images/content_corner_top_right.gif" width="6" height="8" alt=""></td>
+      </tr>
+      <tr>
+        <td background="/images/content_frame_images/content_frame_left.gif"><img src="/images/spacer.gif" width="6" height="6" alt=""> </td>
+        <td>
+		  <table width="100%" border="0" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF" id="savedFlightLinks">
+            <tr valign="top">
+			<cfoutput query="getMyFlights">
+				<cfif ( (getMyFlights.CurrentRow MOD CEILING(getMyFlights.RecordCount/4) ) EQ 1 ) AND (getMyFlights.CurrentRow NEQ 1)>
+					</tr><tr valign="top">
+				</cfif>
+				<td width="25%" style="padding: 3px; border-right: 1px solid ##CCC;	border-bottom: 1px solid ##CCC;	border-top: none; border-left: none"><a href="/#Request.const_default_htm#?mID=#mID#&fID=#FlightID#" onmouseover="this.T_WIDTH=122;this.T_SHADOWWIDTH=3;this.T_BORDERCOLOR='##B6B8BA';this.T_TEMP=2500;this.T_TITLE='Last Updated';this.T_TITLECOLOR='##003366';return escape('<cf_formatdate inDate=#LastUpdated#>')">#FlightName#</a></td>
+			</cfoutput>
+            </tr>
+          </table>
+		  
+		<form action="/#Request.const_default_htm#" method="post">
+		<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" style="margin: 9px 0 0 0">
+		  <tr>
+			<td width="100%" align="right" valign="middle" style="padding: 3px 3px 3px 0px">
+			  <label for="FlightToBeSaved">Save map as:</label>
+			</td>
+			<td valign="middle" style="padding: 3px 0px 3px 0px">
+			<cfoutput>
+			<input type="text"  class="input-box" maxlength="100" size="25" name="FlightToBeSaved" value="" style="width: 144px; height: 12px; font-size: 9px; font-family: verdana, arial, sans-serif">
+			<input type="hidden" name="mID" value="#mID#">
+			<input type="hidden" name="uniqueClick" value="#uniqueClick#">
+			</cfoutput>
+			</td>
+			<td width="62" valign="middle" style="padding: 3px 0px 3px 5px">
+			  <input name="SaveFlight" type="image" src="/images/forms/save.gif" alt="Save" width="45" height="14" border="0">
+			</td>
+		  </tr>
+		</table>
+        </form>
+
+
+        </td>
+        <td background="/images/content_frame_images/content_frame_right.gif"></td>
+      </tr>
+      <tr>
+        <td><img src="/images/content_frame_images/content_corner_bot_left.gif" width="6" height="7" alt=""></td>
+        <td background="/images/content_frame_images/content_frame_bottom.gif"></td>
+        <td><img src="/images/content_frame_images/content_corner_bottom_right.gif" width="6" height="7" alt=""></td>
+      </tr>
+    </table>
+  </div>
+<!--- </div> --->

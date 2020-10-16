@@ -1,0 +1,498 @@
+body, p {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+}
+table {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+}
+.dataTable {
+	font-family: Tahoma, Verdana, Arial, Helvetica, sans-serif;
+	padding: 3px 6px;
+	color: #333333;
+	border-left: 1px dashed #999;
+	line-height: 1em;
+}
+h3 {
+	font-weight: bold;
+	color: #003366;
+	font-size: 1em;
+	margin-bottom: 0;
+	padding-bottom: 0;
+}
+.whiteText {
+	color: #CCCCCC;
+}
+/* ************* link selector styles *******************/
+/* these are for the links in the nav bar */
+a.navlink:link {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-weight: bold;
+	text-decoration: none;
+	color: #666666;
+}
+a.navlink:visited {
+	color: #666666;
+	text-decoration: none;
+}
+a.navlink:hover {
+	color: #E3E6E8;
+	background-color: #666666;
+}
+/* These are for standard blue links in text */
+a:link {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	text-decoration: none;
+	color: #003366;
+}
+a:visited, a:hover {
+	color: #003366;
+	text-decoration: none;
+}
+a:active {
+	text-decoration: underline;
+	color: #0033FF;
+}
+/* a.reversed are for light colored links on a dark background */
+a.reversed:link, a.reversed:visited {
+	color: #CCCCCC;
+	text-decoration: none;
+}
+a.reversed:hover {
+	color: #FFFFFF;
+	text-decoration: underline;
+}
+a.underline:link, a.underline:visited {
+	text-decoration: underline;
+}
+/* a.tabularHeader are for linked headers at top of tabular data */
+a.tabular:link, a.tabular:visited {
+	font-family: Tahoma, Verdana, Arial, Helvetica, sans-serif;
+	color: #003366;
+	text-decoration: underline;
+	font-weight: bold;
+	font-size: 10px;
+}
+a.tabular:hover {
+	font-family: Tahoma, Verdana, Arial, Helvetica, sans-serif;
+	color: #000000;
+	text-decoration: underline;
+	font-weight: bold;
+	font-size: 10px;
+}
+/* alarm class added 5-26-05 for alarm links */
+a.alarm:link, a.alarm:hover, a.alarm:active {
+color: #990000;
+text-decoration: underline;
+}
+a.alarm:visited {
+color: #003366;
+text-decoration: underline;
+}
+/* The following items control the current page indicator in the nav links */
+body#home a.navlink#homeNav,
+body#instrument a.navlink#instNav,
+body#satellite a.navlink#satNav,
+body#meteorologists a.navlink#metNav,
+body#charts a.navlink#chartNav,
+body#text a.navlink#textNav,
+body#briefings a.navlink#briefingsNav,
+body#radar a.navlink#radNav {
+	color: #666666;
+	background-color: #FFFFFF;
+}
+/* Ioannis */
+.navlinkON {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-weight: bold;
+	text-decoration: none;
+	color: #0066FF;
+	background-color:#FFFF66;
+}
+/* ******************* end link styles ******************/
+/* .nav1 is to make text match the nav links */
+.nav1 {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	color: #666666;
+	font-size: 9px;
+}
+/* footer is the contact info at the bottom of the page */
+.footer {
+	font-size: 9px;
+}
+/* *********************** styled box DIVs ******************* */
+/* menuWrap is a relatively-positioned container DIV for my side menu DIV  */
+.menuWrap {
+	position: relative;
+	overflow: auto;
+	overflow-x: hidden;
+	top: 0;
+	background-color: #E3E6E8;
+	clear: both;
+}
+/* needed for the expand/collapse menus */
+/* Ioannis */
+.switchcontent{
+	background: #E3E6E8;
+	display:none;
+}
+.region{
+	background: #E3E6E8;
+	display:none;
+}
+/* sideMenuBG, sideMenuBG2 and sideMenuBG3 control the background colors and positioning of the side menu items */
+.sideMenuBG {
+	padding: 3px 0px 3px 5px;
+	background: #B6B8BA;
+	display: block;
+	border-top: 1px solid #72828B;
+	border-right: 1px solid B6B8BA;
+	border-bottom: none;
+	border-left: none;
+	}
+.sideMenuBG2 {
+	padding: 3px 0 0px 5px;
+	background: #E3E6E8;
+	display: block;
+	border-right: 1px solid #B6B8BA;
+	clear: both;
+	}
+.sideMenuBG3 {
+	line-height: 12px;
+	padding: 3px 0 0px 15px;
+	background: #E3E6E8;
+	display: block;
+	border-right: 1px solid #B6B8BA;
+	}
+.sideMenuspacer {
+	line-height: 3px;
+	background: #E3E6E8;
+	display: block;
+	border-right: 1px solid #B6B8BA;
+	border-left: 1px solid #72828B;
+	}
+
+.SearchMenuBG1 {
+	padding: 3px 0 3px 5px;
+	background: #CCE2FF;
+	display: block;
+	border-top: 1px solid #72828B;
+	border-right: 1px solid #B6B8BA;
+	border-bottom: none;
+	border-left: 1px solid #72828B;
+}
+.SearchMenuBG2 {
+	padding-left: 5px;
+	display: block;
+	border-right: 1px solid #B6B8BA;
+	border-bottom: none;
+	border-left: 1px solid #72828B;
+}
+.SearchMenuBG3 {
+	padding: 0 0 0 20px;
+	margin: 0;
+	display: block;
+	border-right: 1px solid #B6B8BA;
+	border-left: 1px solid #72828B;
+}
+.mapContainer {
+	position: absolute;
+	height: auto;
+	display: block;
+}
+div#loginwrapper {
+position: relative;
+}
+div#mapFooter .sideMenuBG {
+	padding: 3px 3px 3px 3px;
+	border-top: 1px solid #72828B;
+	border-right: 1px solid #B6B8BA;
+	border-bottom: 1px solid #72828B;
+	border-left: 1px solid #B6B8BA;
+	}
+/* ********************** End Box Style DIVs ****************** */
+/* ***************form styles**************** - jw*/
+/* sideMenuFontLev1 is for the top (header) level of the right side menu */
+/* text-align: left added to .sideMenuFontLev1 5/26/05 jw */
+.sideMenuFontLev1 {
+	font-weight: bold;
+	font-size: 9px;
+	color: #003366;
+	text-align: left;
+}
+/* sideMenuFontLev2 is for the second text level of the right side menu */
+.sideMenuFontLev2 {
+	font-size: 9px;
+	color: #003366;
+}
+.formTable {
+	padding-bottom: 3px;
+	padding-right: 6px;
+	padding-left: 6px;
+}
+.formTableBorder {
+	padding-bottom: 3px;
+	padding-right: 6px;
+	padding-left: 6px;
+	border-left-width: 1px;
+	border-left-style: dashed;
+	border-left-color: #999;
+}
+.formText {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	color: #000000;
+	font-size: 9px;
+}
+.myFlightsInput-box {
+margin-bottom: 0px;
+font-size: 9px;
+color: #000000;
+background: #FFFFFF;
+}
+/* submit-button simplified 5-24-05 - jw*/
+.submit-button {
+	color: #666666;
+	background: #ffffff;
+	border: 1px solid #B6B8BA;
+	font-size: 11px;
+	margin: 6px 0px 6px 0px;
+	padding: 2px 4px;
+	font-weight: bold;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+.input-box {
+margin-bottom: 0px;
+font-size: 12px;
+color: #000;
+background: #FFFFFF;
+border: #B6B8BA solid 1px;
+height: 18px;
+}
+/* label selector added 5-24-05 - jw */
+label {
+font-family: verdana, arial, helvetica, sans-serif;
+font-size: 1em;
+}
+/* The following styles are specific to the login page - jw */
+body#login .input-box {
+font-size: 10px;
+font-family: verdana, arial, helvetica, sans-serif;
+width: 200px;
+height: 15px;
+}
+/* .loginLabel class added 5-24-05 - jw */
+body#login label {
+font-size: 10px;
+width: 11em;
+float: left;
+text-align: right;
+padding: 1em 1em 0 0;
+margin: 0;
+margin-top: 3px;
+clear: both;
+}
+/* required for the required fields -Ioannis */
+.formlabel {
+font-size: 10px;
+width: 11em;
+float: left;
+text-align: right;
+padding: 1em 1em 0 0;
+margin: 0;
+margin-top: 3px;
+clear: both;
+}
+/* required for the required fields ON ERROR state -Ioannis*/
+.formlabelRed {
+font-size: 10px;
+color:#FF0000;
+width: 11em;
+float: left;
+text-align: right;
+padding: 1em 1em 0 0;
+margin: 0;
+margin-top: 3px;
+clear: both;
+}
+/* class added 5-25-05 - jw */
+div#logincheckboxdiv {
+margin: .5em 12em 0 12em;
+}
+
+/* class added 5-25-05 - jw */
+div#loginlabeldiv {
+font-size: 9px;
+padding: 0 0 0 0;
+text-align: left;
+clear: both;
+}
+/* class added 5-25-05 - jw */
+body#login .submit-button {
+margin: 0 0 0 0;
+}
+div#loginTextDiv {
+padding: .5em 0 0 120px;
+width: 200px;
+font-size: 1em;
+clear: both;
+display: block;
+}
+
+/* **************** end form styles ***************** - jw */
+.serverMessage {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-weight: normal;
+	margin-bottom: 2em 0;
+	line-height: 18px;
+	font-weight: bold;
+	color: #003366;
+}
+.serverMessageSub {
+	font-weight: normal;
+}
+/* css for form select items simplified 5/25/05 - jw*/
+select {
+	margin-top: 0 0 0 .5em;
+}
+.selectLabel {
+font-size: 9px;
+color: #003366;
+width: 30px;
+text-align: right;
+clear: left;
+}
+form p {
+text-align: left;
+}
+/*added id class for heading cells of map containers - jw 5/28/05*/
+.mapTitleBlock {
+	background-color: #CCE2FF ! important;
+	border-top: 1px solid #72828B;
+	border-right: 1px solid #B6B8BA;
+	text-align: left;
+}
+.important {
+color: #FF0000;
+}
+.savedFlightsCells table #savedFlightLinks {
+	padding: 3px;
+	border-right: 1px solid #CCC ! important;
+	border-bottom: 1px solid #CCC ! important;
+	border-top: none;
+	border-left: none;
+}
+/* these items are for the preferences page */
+.prefBGtop {
+	padding: 3px 0 3px 5px;
+	background: #CCE2FF;
+	display: block;
+	border-top: 1px solid #72828B;
+	border-right: 1px solid #B6B8BA;
+	border-bottom: none;
+	border-left: 1px solid #72828B;
+}
+.prefBG {
+	padding: 3px 0px 3px 5px;
+	background: #B6B8BA;
+	display: block;
+	border-top: 1px solid #72828B;
+	border-right: 1px solid B6B8BA;
+	border-bottom: none;
+	border-left: none;
+}
+.prefBG2 {
+	background: #E3E6E8;
+	padding: 2px 6px 3px 6px;
+	display: block;
+	border-right: 1px solid #B6B8BA;
+	border-left: 1px solid #B6B8BA;
+}
+.prefBG3 {
+	background: #CCCCCC;
+	border-left: 1px solid #72828B;
+	padding: 3px 0px 3px 0px;
+	display: block;
+	border-top: 1px solid #72828B;
+	border-right: 1px solid #B6B8BA;
+	border-bottom: none;
+}
+.prefBG4 {
+	padding: 2px 0 0 0;
+	display: block;
+	border-right: 1px solid #B6B8BA;
+	border-bottom: none;
+	border-left: 1px solid #72828B;
+}
+/* end preferences page items */
+#mainIPMovie {
+	overflow:none;
+}
+#execute {
+	border-style:none;
+	border-style:solid;
+	border-color:#72828B;
+	border-width:1px;
+	/*border-bottom-style:solid;
+	border-bottom-color:#4C5056;
+	border-bottom-width:1px;
+	border-left-width:1px;
+	border-left-style:solid;
+	border-left-color:#B6B8BA;
+	border-right-width:1px;
+	border-right-style:solid;
+	border-right-color:#B6B8BA;*/
+	text-align:center;
+	width:80px;
+	margin-left:35px;
+	background-color:#B6B8BA;
+	height:20px;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size:11px;
+	color:#003366;
+	font-weight:bold;
+}
+#clear {
+	border-style:none;
+	border-style:solid;
+	border-color:#72828B;
+	border-width:1px;
+	text-align:center;
+	width:80px;
+	margin-left:35px;
+	background-color:#B6B8BA;
+	height:20px;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size:11px;
+	color:#003366;
+	font-weight:bold;
+}
+#fpl {
+	padding-bottom:10px;
+}
+#animate {
+	border-style:none;
+	border-style:solid;
+	border-color:#72828B;
+	border-width:1px;
+	text-align:center;
+	width:80px;
+	margin-bottom:20px;
+	background-color:#B6B8BA;
+	height:20px;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size:11px;
+	color:#003366;
+	font-weight:bold;
+}
+#animationControl{
+	/* border-style:solid;
+	border-width:1px;
+	border-color:#000000;
+	margin:10px;
+	background-color:#CCCCCC; */
+}

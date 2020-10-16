@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<groups>
+	<group>
+		<displayname>Observed Wx</displayname>
+		<subgroup>
+			<displayname>Satellite</displayname>
+			<layers>1,22,25,26,27,30,31,32,35,37</layers>
+		</subgroup>
+		<subgroup>
+			<displayname>Radar</displayname>
+			<layers>23,38,39,28</layers>
+		</subgroup>
+		<subgroup>
+			<displayname>Metars</displayname>
+			<layers>102</layers>
+		</subgroup>
+		<subgroup>
+			<displayname>TAFs</displayname>
+			<layers>116</layers>
+		</subgroup>
+		<subgroup>
+			<displayname>Winds(Cur)</displayname>
+			<layers>107</layers>
+		</subgroup>
+		<subgroup>
+			<displayname>Flight Rules</displayname>
+			<layers>106</layers>
+		</subgroup>
+		<subgroup>
+			<displayname>Tropopause Height</displayname>
+			<layers>111</layers>
+		</subgroup>
+		<subgroup>
+			<displayname>Freezing Level</displayname>
+			<layers>110</layers>
+		</subgroup>
+	</group>
+	<!--<group>
+		<displayname>Forecast Wx</displayname>
+		<subgroup>
+			<displayname>PRESSURE</displayname>
+			<layers>137,138,139,140</layers>
+		</subgroup>
+		<subgroup>
+			<displayname>Fronts</displayname>
+			<layers>141,142</layers>
+		</subgroup>
+		<subgroup>
+			<displayname>SFC TEMP</displayname>
+			<layers>117,118,119,120,121</layers>
+		</subgroup>
+		<subgroup>
+			<displayname>FL200 TEMP</displayname>
+			<layers>122,125,123,126,124</layers>
+		</subgroup>
+		<subgroup>
+			<displayname>FL250 TEMP</displayname>
+			<layers>127,128,129,130,131</layers>
+		</subgroup>
+		<subgroup>
+			<displayname>FL300 TEMP</displayname>
+			<layers>132,133,134,135,136</layers>
+		</subgroup>		
+	</group>-->
+
+	
+	<group>
+		<displayname>Background Layers</displayname>
+		<subgroup>
+			<displayname>Aviation Features</displayname>
+			<layers>3,24,21,4,5</layers>
+		</subgroup>
+		<subgroup>
+			<displayname>Political Features</displayname>
+			<layers>17,9,13,8,12,10,11</layers>
+		</subgroup>
+	</group>
+
+	<group>
+		<displayname>Beta Features</displayname>
+		<!--<subgroup>
+			<displayname>Stations</displayname>
+			<layers>115</layers>
+		</subgroup>-->
+
+		<!--<subgroup>
+			<displayname>Radar</displayname>
+			<layers>108</layers>
+		</subgroup>-->
+		<subgroup>
+			<displayname>PIREPs</displayname>
+			<layers>103</layers>
+		</subgroup>
+		<subgroup>
+			<displayname>SIGMETs</displayname>
+			<layers>143</layers>
+		</subgroup>
+		<subgroup>
+			<displayname>AIRMETs</displayname>
+			<layers>144</layers>
+		</subgroup>
+	</group>
+
+
+	<group>
+		<displayname>NOSHOW</displayname>
+		<subgroup>
+			<displayname>Satellite</displayname>
+			<layers>2</layers>
+		</subgroup>
+		<subgroup>
+			<displayname>Pressure</displayname>
+			<layers>109</layers>
+		</subgroup>
+		<subgroup>
+			<displayname>Fronts</displayname>
+			<layers>105</layers>
+		</subgroup>
+		<subgroup>
+			<displayname>Temps(Cur)</displayname>
+			<layers>114</layers>
+		</subgroup>
+		<subgroup>
+			<displayname>SIGWX</displayname>
+			<layers>112,113</layers>
+		</subgroup>
+		<subgroup>
+			<displayname>PRESSURE</displayname>
+			<layers>137,138,139,140</layers>
+		</subgroup>
+		<subgroup>
+			<displayname>Fronts</displayname>
+			<layers>141,142</layers>
+		</subgroup>
+		<subgroup>
+			<displayname>SFC TEMP</displayname>
+			<layers>117,118,119,120,121</layers>
+		</subgroup>
+		<subgroup>
+			<displayname>FL200 TEMP</displayname>
+			<layers>122,125,123,126,124</layers>
+		</subgroup>
+		<subgroup>
+			<displayname>FL250 TEMP</displayname>
+			<layers>127,128,129,130,131</layers>
+		</subgroup>
+		<subgroup>
+			<displayname>FL300 TEMP</displayname>
+			<layers>132,133,134,135,136</layers>
+		</subgroup>		
+		<subgroup>
+			<displayname>Primatives</displayname>
+			<layers>6,14,15,16,18,19,20,104</layers>
+		</subgroup>
+	</group>
+
+	
+</groups>

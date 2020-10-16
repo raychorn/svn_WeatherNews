@@ -1,0 +1,157 @@
+<cfinclude template="include/GlobalParams.cfm">
+<!--- <cfinclude template="auth.cfm"> --->
+<cfinclude template="include/authentication.cfm">
+
+<cfif authfailed EQ 1>
+	<cfinclude template="login.htm">
+	<cfabort>
+<cfelseif authfailed EQ 2>
+	<cfset reasonType = "<b>You are already logged in from another workstation or browser.  Kindly perform a login from the browser or workstation you are currently using to resume your usage session.  Remember to logout when you are done.</b>">
+	<cfinclude template="login.htm">
+	<cfabort>
+</cfif>
+
+<cfparam name="mID" default="1">
+<cfparam name="mapBgColor" default="##81B1E2">
+
+
+<cfif IsDefined("mID")>
+	<cfset mID = mID>
+	<cflock scope="SESSION" timeout="#createTimeSpan(0,0,0,45)#">
+		<cfset SESSION.flashID = mID />
+	</cflock>
+<!--- <cfelseif IsDefined("FORM.FIELDNAMES")>
+	<cfif FindNoCase("FFMID_", FORM.FIELDNAMES)>
+			<cfset mID = #ListGetAt(ListGetAt(FORM.FIELDNAMES,FindNoCase("FFMID_", FORM.FIELDNAMES)),2,"_")# >
+	</cfif>
+ --->
+</cfif>
+		
+<!--- Countries,Coastlines,Borders"> --->
+<cfparam name="mapLayers" default="18,16,10,11,12">
+<!--- <cfparam name="BBox"  default="-180,-90,180,90"> --->
+<cfparam name="BBox"  default="-80.4719687092568,33.3011734028683,7.32203389830511,76.5058670143416">
+<!--- <cfparam name="BBox"  default="-133.89305329831,4.01570250708934,13.7590472541694,72.9117974929107"> --->
+<cfset localHostName = ListFirst(CGI.HTTP_REFERER,":") & "://" & CGI.HTTP_HOST & "/flashservices/gateway">
+
+<cfswitch expression="#mID#">
+	<cfcase value="1">
+		<cfset IncludeFileName = "Dashboard.cfm">
+	</cfcase>
+	<cfcase value="2">
+		<cfset IncludeFileName = "InstrumentPanel.cfm">
+	</cfcase>
+	<cfcase value="3">
+		<cfset IncludeFileName = "Satellite.cfm">
+	</cfcase>
+	<cfcase value="4">
+		<cfset IncludeFileName = "Radar.cfm">
+	</cfcase>
+	<cfcase value="5">
+		<cfset IncludeFileName = "Charts.cfm">
+	</cfcase>
+	<cfcase value="6">
+		<cfset IncludeFileName = "Text.cfm">
+	</cfcase>
+	<cfcase value="8">
+		<cfset IncludeFileName = "ContactRC.cfm">
+	</cfcase>
+	<cfcase value="7">
+		<cfset IncludeFileName = "Briefings.cfm">
+	</cfcase>
+	<cfcase value="20">
+		<cfset IncludeFileName = "Preferences.cfm">
+	</cfcase>
+</cfswitch>
+
+<cfset topSection = "MAIN">
+<cfinclude template="include/topbar.cfm">
+
+<cfset MenuList = "">
+<cfset MenuList = MenuList & "1|Home|0" & ";">
+<cfset MenuList = MenuList & "2|Instrument Panel|1" & ";">
+<cfset MenuList = MenuList & "3|Satellite|1" & ";">
+<cfset MenuList = MenuList & "4|Radar|0" & ";">
+<cfset MenuList = MenuList & "5|Charts|0" & ";">
+<cfset MenuList = MenuList & "6|Text|0" & ";">
+<!--- <cfset MenuList = MenuList & "7|Briefings|0" & ";"> --->
+<cfset MenuList = MenuList & "8|RCs on Duty|0" & ";">
+
+
+<!--- Begin menu layout --->
+<table width="100%" border="0" cellpadding="0" cellspacing="0" bgcolor="#E3E6E8">
+  <tr>
+    <td colspan="3">
+      <!--- main navigation bar is in this table --->
+      <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+        <tr>
+          <td width="8" height="23" valign="top"><img src="/images/main_table_images/main_left_top_corner.gif" width="8" height="23" alt=""></td>
+		  <td width="100%" nowrap background="/images/main_table_images/top_nav_cell_background.gif" class="nav1">&nbsp;&nbsp;
+				<cfloop list="#MenuList#" index="LoopIndex" delimiters=";">
+				<cfoutput>
+					<cfset currMID = ListgetAt(LoopIndex,1,"|")>
+					<cfset currMenu = ListgetAt(LoopIndex,2,"|")>
+					<cfif (mID EQ currMID)>
+						<span class="navlinkON">&nbsp;#currMenu#&nbsp;</span>
+					<cfelse>
+						<a href="/default.htm?mID=#currMID#" class="navlink">&nbsp;#currMenu#&nbsp;</a>	
+					</cfif>&nbsp;|&nbsp; 
+				</cfoutput>
+				</cfloop>
+			</td>	
+            <td width="8"><img src="/images/main_table_images/main_right_top_corner.gif" width="8" height="23" alt=""></td>
+        </tr>
+      </table><!--- End main navigation bar --->
+    </td>
+  </tr>
+  <tr>
+    <td width="8" background="/images/left_side_bezel.gif"><img src="/images/spacer.gif" width="8" height="1" alt=""></td>
+    <td width="100%" valign="top">
+		<cfinclude template="#IncludeFileName#">
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+          <tr>
+            <td width="6"><img src="/images/spacer.gif" width="6" height="9" alt=""></td>
+            <td width="100%">
+              <h3>&nbsp;<br>
+                Weathernews Aviation Team 24-hour Support:
+				<cfoutput>
+				<img src="/images/liveSupportON.gif" width="146" height="21" align="absmiddle" style="cursor:hand; cursor:pointer" onClick="this.newWindow = window.open('http://livechat.boldchat.com/aid/6634079729433353172/bc.chat?cwdid=3793603794582295956&amp;wdid=2310843546009077854&amp;&amp;vn=#ListGetAt(cookie.BeaconStats,2,"|")#&amp;&&amp;url=' + escape(document.location.href), 'Chat', 'toolbar=0,scrollbars=1,location=0,statusbar=0,menubar=0,resizable=1,width=640,height=480');this.newWindow.focus();this.newWindow.opener=window;return false;">
+				</cfoutput>
+				</h3>
+              <p class="footer"> <cfoutput>#request.OPS_PHONE_CONTACT#</cfoutput> | <!--- Instant Message: <a href="#">WNISky</a> | --->
+                Fax: 405.310.2806 | E-mail: <a href="mailto:WNISkyRc@wni.com">WNISkyRc@wni.com</a></p>
+            </td>
+            <td width="6"><img src="/images/spacer.gif" width="6" height="9" alt=""></td>
+          </tr>
+        </table>
+  	</td>
+    <td width="8" background="/images/main_table_images/right_side_bezel.gif"><img src="/images/spacer.gif" width="8" height="1" alt=""></td>
+  </tr>
+  <tr>
+    <td><img src="/images/main_table_images/main_bottom_left_corner.gif" width="8" height="9" alt=""></td>
+    <td background="/images/main_table_images/main_bottom_bezel.gif"><img src="/images/spacer.gif" width="1" height="9" alt=""></td>
+    <td><img src="/images/main_table_images/main_bottom_right_corner.gif" width="8" height="9" alt=""></td>
+  </tr>
+</table>
+<script type="text/javascript">
+// refresh iframe if suitable
+if(document.getElementById('mapCall')) {
+	var timeout = window.setInterval('resetAni();',300000);
+}	
+function resetAni () {
+	if(document.getElementById('animate') && document.getElementById('animate').value == 'Return') {
+		if (document.getElementById('animate').value == "Animate") {
+			document.getElementById('mapCall').src = '/mapCall.cfm?mID=' + flashID + '&flashid=' + flashID;
+			document.getElementById('animate').value = "Animate";
+			document.getElementById('clear').disabled = false;
+		} else {
+			document.getElementById('mapCall').src = 'aniMapViewer.cfm';
+			document.getElementById('animate').value = "Return";
+			document.getElementById('clear').disabled = true;
+		}
+	} else {
+		reloadMap(<cfoutput>#mID#</cfoutput>);
+	}
+}
+</script>
+<cfinclude template="include/footer.cfm">
